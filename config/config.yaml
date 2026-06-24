@@ -1,0 +1,36 @@
+#Configuration Framwork
+#Global control center
+#Options: "tech_gadgets", "financial_trends"
+
+selected_domain: "tech_gadgets"
+
+domains:
+  tech_gadgets:
+    name: "Consumer Electronics Tracker"
+    scraper:
+      source_type: "reddit"
+      target_subreddit: "technology"
+      limit: 200
+    topic_modeling:
+      min_cluster_size: 5
+      lim_label_prompt: "You are a tech product manager> Review these user comments and summarize the core complaint or praise into a concise 3-word title"
+    rag:
+      collection_name: "tech_docs"
+      chunk_size: 500
+      chunk_overlap: 50
+
+
+  financial_trends:
+    name: "Market Sentiment Analytics"
+    scraper:
+      source_type: "reddit"
+      target_subreddit: "wallstreetbets"
+      limit: 500
+    topic_modeling:
+      min_cluster_size: 10
+      llm_label_prompt: "You are a financial analyst. Review these market discussions and summarize the market sentiment or stock focus into a concise 3-word title."
+    rag:
+      collection_name: "finance_docs"
+      chunk_size: 1000
+      chunk_overlap: 100
+
